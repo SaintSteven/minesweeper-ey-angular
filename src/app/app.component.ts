@@ -8,10 +8,11 @@ import { Cell } from '../game/cell';
 })
 export class AppComponent {
   title = 'minesweeper';
-  board = new Board(5, 5)
+  board: Board;
 
   constructor() {
     this.reset();
+    this.board = new Board(10, 10);
   }
 
   checkCell(cell: Cell) {
@@ -31,6 +32,6 @@ export class AppComponent {
   }
 
   reset() {
-    this.board = new Board(20, 50);
+    this.board = new Board(10, 10);
   }
 }
