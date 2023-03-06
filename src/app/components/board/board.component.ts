@@ -15,11 +15,11 @@ export class BoardComponent {
   }
 
   generateEmptyBoard(boardSize: number) {
-    let emptyBoard: any[] = [];
+    const emptyBoard: any[] = [];
 
     for (let x = 0; x < boardSize; x++) {
       for (let y = 0; y < boardSize; y++) {
-        let cell = {
+        const cell = {
           x: x,
           y: y,
           status: 'SAFE',
@@ -34,25 +34,32 @@ export class BoardComponent {
   }
 
   generateBombsMap(boardSize: number) {
-    let bombsMap: any[] = [];
-    let bombsCount = boardSize + Math.floor(Math.random() * 11);
+    const bombsMap: any[] = [];
+    const bombsCount = boardSize + Math.floor(Math.random() * 11);
 
     while (bombsCount > bombsMap.length) {
-      let x = Math.floor(Math.random() * boardSize);
-      let y = Math.floor(Math.random() * boardSize);
-      let bomb = {
+      const x = Math.floor(Math.random() * boardSize);
+      const y = Math.floor(Math.random() * boardSize);
+      const bomb = {
         x: x,
         y: y,
       }
-      if (bombsMap.some(
-        (bombPlanted) => bombPlanted.x === x && bombPlanted.y === y)) continue
+      if (bombsMap.some((bombPlanted) => bombPlanted.x === x && bombPlanted.y === y)) continue
       bombsMap.push(bomb);
     }
     return bombsMap;
   }
 
   putBombsInEmptyBoard(emptyBoard: any[], bombsMap: any[]) {
-    return emptyBoard.map((cell) => {
+    const bombBoard = emptyBoard.map(cell => {
+      bombsMap.forEach(bomb => {
+        if (bomb.x === cell.x && bomb.y === cell.y) {
+          cell.hasBomb = true;
+        }
+      })
+    })
+    return bombBoard;
+    /* return emptyBoard.map((cell) => {
       let bomb = bombsMap.find((bomb) => {
         return (bomb.x === bomb.x && bomb.y === bomb.y)
       })
@@ -61,6 +68,6 @@ export class BoardComponent {
       } else {
         return { ...cell }
       }
-    })
+    }) */
   }
 }
