@@ -1,30 +1,36 @@
 import { Component } from '@angular/core';
-import { Cell } from 'src/game/cell';
 import { Board } from '../game/board';
-
+import { Cell } from '../game/cell';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Buscaminas EY';
-  board = new Board(10, 5);
+  title = 'minesweeper';
+  board = new Board(5, 5)
+
+  constructor() {
+    this.reset();
+  }
 
   checkCell(cell: Cell) {
     const result = this.board.checkCell(cell);
     if (result === 'gameover') {
-      alert('Game Over!');
+      alert('You lose');
     } else if (result === 'win') {
-      alert('You Win!');
+      alert('you win');
+    }
+  }
+  flag(cell: Cell) {
+    if (cell.status === 'flag') {
+      cell.status = 'open';
     } else {
-      flagCell();
+      cell.status = 'flag';
     }
   }
 
-  flagCell(cell: Cell) {
-    cell.hasFlag = true;
+  reset() {
+    this.board = new Board(20, 50);
   }
-
-
 }

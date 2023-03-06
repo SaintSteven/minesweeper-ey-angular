@@ -1,10 +1,7 @@
 export class Cell {
-  status: 'opened' | 'cleared' | 'flagged' = 'opened';
-  hasBomb = false;
-  nearBombs = 0;
-  hasFlag = false;
+  status: 'open' | 'clear' | 'flag' = 'open';
+  mine = false;
+  proximityMines = 0;
 
-  constructor(public y: number, public x: number) {
-
-  }
+  constructor(public row: number, public column: number) { }
 }
