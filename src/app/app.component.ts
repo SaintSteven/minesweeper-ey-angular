@@ -7,7 +7,7 @@ import { Cell } from '../game/cell';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'minesweeper';
+  title = 'Buscaminas EY';
   board: Board;
 
   constructor() {
