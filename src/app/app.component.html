@@ -1,3 +1,14 @@
-<div class='boenas'>But I can't see it all</div>
-<!-- <app-minefield></app-minefield> -->
-<app-board></app-board>
+Board:
+<table>
+  <tr *ngFor="let row of board.cells; index as y;">
+    <td *ngFor="let cell of row; index as x;"
+    (click)='board.checkCell(cell)'
+    (contextmenu)='$event.preventDefault; flag(cell)'>
+      <div>Status: {{cell.status}}</div>
+      <div *ngIf="cell.status === 'cleared'">{{cell.nearBombs}}</div>
+      <div *ngIf="cell.hasBomb && cell.status === 'cleared'"  >
+        💣
+      </div>
+    </td>
+  </tr>
+</table>
