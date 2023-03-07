@@ -20,11 +20,13 @@ export class AppComponent {
 
   checkCell(cell: Cell) {
     const result = this.board.checkCell(cell);
-    if (result === 'gameover') {
-      alert('Inténtalo una vez más! 🔄');
-    } else if (result === 'win') {
-      alert('Has ganado! Eres el mejor! 💜');
-    }
+    setTimeout(() => {
+      if (result === 'gameover') {
+        alert('Inténtalo una vez más! 🔄');
+      } else if (result === 'win') {
+        alert('Has ganado! Eres el mejor! 💜');
+      }
+    }, 500);
   }
 
   flag(cell: Cell) {
