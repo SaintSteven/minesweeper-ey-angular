@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10vh;
+  margin-top: 1vh;
   height: fit-content;
 }
 
@@ -11,10 +11,29 @@
   border: 1px solid;
   padding: 20px;
   border-radius: 8px;
+  
+}
+
+.info-panel {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0 24px;
+}
+
+.panel-item {
+  font-size: large
+}
+
+.reset-btn:hover {
+  cursor: pointer;
 }
 
 .mat-grid-list {
   height: 600px;
   width: 600px;
   padding-bottom: 0 !important;
+}
+
+.cell {
+  font-size: x-large;
 }

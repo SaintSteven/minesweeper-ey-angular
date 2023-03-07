@@ -1,9 +1,9 @@
 <div class='center-container'>
   <div class='game-container'>
     <div class='info-panel'>
-      <div class='panel-item'>Total de bombas 💣: {{ 1+1 }}</div>
-      <div class='panel-item'>Banderas puestas 🏴‍☠️: {{ 1+1 }}</div>
-      <div class='panel-item' (click)='reset()'>RESEEEET</div>
+      <div class='panel-item'>Total de bombas 💣: {{ totalBombsInBoard   }}</div>
+      <div class='panel-item'>Banderas puestas 🏴‍☠️: {{ totalFlagsInBoard }}</div>
+      <div class='panel-item reset-btn' (click)='reset()'>Reiniciar 🔄</div>
     </div>
     <div class='minefield'>
       <mat-divider></mat-divider>
@@ -14,13 +14,13 @@
         (contextmenu)="$event.preventDefault(); flag(cell)" 
         *ngFor="let cell of board.cells.flat();"
         >
-          <span *ngIf="cell.status === 'clear' && !cell.mine">
+          <span *ngIf="cell.status === 'clear' && !cell.mine" class="cell">
             {{ cell.proximityMines }}
           </span>
-          <span *ngIf="cell.status === 'flag'">
+          <span *ngIf="cell.status === 'flag'" class="cell">
             🏴‍☠️
           </span>
-          <span *ngIf="cell.mine && cell.status === 'clear'">
+          <span *ngIf="cell.mine && cell.status === 'clear'" class="cell">
             💣
           </span>
         </mat-grid-tile>
@@ -28,5 +28,3 @@
     </div>
   </div>
 </div>
-
-<button mat-raised-button (click)='reset()'>Restart</button>
