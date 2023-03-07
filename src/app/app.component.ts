@@ -15,15 +15,15 @@ export class AppComponent {
   constructor() {
     this.reset();
     this.totalFlagsInBoard = 0;
-    this.totalBombsInBoard = 20 - Math.floor(Math.random() * 10);
+    this.totalBombsInBoard = Math.floor(Math.random() * (6)) + 10;
   }
 
   checkCell(cell: Cell) {
     const result = this.board.checkCell(cell);
     if (result === 'gameover') {
-      alert('You lose');
+      alert('Inténtalo una vez más! 🔄');
     } else if (result === 'win') {
-      alert('you win');
+      alert('Has ganado! Eres el mejor! 💜');
     }
   }
 
@@ -38,8 +38,8 @@ export class AppComponent {
   }
 
   reset() {
-    const totalBombs = 20 - Math.floor(Math.random() * 10)
-    this.board = new Board(10, totalBombs);
+    this.totalBombsInBoard = Math.floor(Math.random() * (6)) + 10;
+    this.board = new Board(10, this.totalBombsInBoard);
     this.totalFlagsInBoard = 0;
   }
 }

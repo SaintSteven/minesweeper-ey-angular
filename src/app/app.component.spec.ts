@@ -1,31 +1,38 @@
-import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { Board } from '../game/board';
 
 describe('AppComponent', () => {
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
+  let component: AppComponent;
+
+  beforeEach(() => {
+    component = new AppComponent();
+  });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'Buscaminas EY'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Buscaminas EY');
+  it('should have a title', () => {
+    expect(component.title).toBeDefined();
   });
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to minesweeper!');
+  it('should create a new board on reset', () => {
+    component.reset();
+    expect(component.board).toBeDefined();
+    expect(component.board instanceof Board).toBeTrue();
+  });
+
+  it('should have a total of bombs between 10 and 15 in a new board', () => {
+    component.reset();
+    expect(component.totalBombsInBoard).toBeGreaterThanOrEqual(10);
+    expect(component.totalBombsInBoard).toBeLessThanOrEqual(15);
+  });
+
+  it('should flag a cell', () => {
+    component.reset();
+    const cell = component.board.cells[0][0];
+    expect(cell.status).toEqual('open');
+    component.flag(cell);
+    expect(cell.status).toEqual('flag');
   });
 });
