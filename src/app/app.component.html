@@ -14,7 +14,12 @@
         (contextmenu)="$event.preventDefault(); flag(cell)" 
         *ngFor="let cell of board.cells.flat();"
         >
-          <span *ngIf="cell.status === 'clear' && !cell.mine" class="cell">
+          <span *ngIf="cell.status === 'clear' && !cell.mine" class="cell" [ngClass]="{
+            'cell-blue': cell.proximityMines === 1,
+            'cell-green': cell.proximityMines === 2,
+            'cell-red': cell.proximityMines === 3,
+            'cell-purple': cell.proximityMines >= 4
+          }">
             {{ cell.proximityMines }}
           </span>
           <span *ngIf="cell.status === 'flag'" class="cell">

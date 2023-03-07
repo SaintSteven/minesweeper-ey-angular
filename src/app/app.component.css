@@ -37,4 +37,21 @@
 
 .cell {
   font-size: x-large;
+  font-weight: bold;
+}
+
+.cell-blue {
+  color: blue;
+}
+
+.cell-green {
+  color: green;
+}
+
+.cell-red {
+  color: #9A004B;
+}
+
+.cell-purple {
+  color: purple;
 }
