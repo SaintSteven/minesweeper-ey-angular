@@ -1,3 +1,8 @@
+<div class='container'>
+
+</div>
+
+
 <style>
   table,
   td {
@@ -9,26 +14,43 @@
     height:32px;
   }
 </style>
-  Board:
-<table>
+
+<table >
   <tr *ngFor="let row of board.cells; index as y">
     <td
       *ngFor="let cell of row; index as x"
       (click)="checkCell(cell)"
       (contextmenu)="$event.preventDefault(); flag(cell)"
     >
-      <!-- <div>Status: {{ cell.status }}</div> -->
       <div *ngIf="cell.status === 'clear' && !cell.mine">{{ cell.proximityMines }}</div>
-      <div *ngIf="cell.status === 'flag'">
-        <!-- <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-          <path fill="#000000" d="M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z" />
-        </svg> -->
-        🏴‍☠️
-      </div>
-      <div *ngIf="cell.mine && cell.status === 'clear'">
-        💣
-      </div>
+      <div *ngIf="cell.status === 'flag'">🏴‍☠️</div>
+      <div *ngIf="cell.mine && cell.status === 'clear'">💣</div>
     </td>
   </tr>
 </table>
 <button (click)="reset()">Restart</button>
+
+
+
+
+
+
+<mat-grid-list cols="10" rowHeight="1:1">
+  <mat-grid-tile 
+  class="col col-sm-1 mat-elevation-z4"
+  (click)="checkCell(cell)"
+  (contextmenu)="$event.preventDefault(); flag(cell)" 
+  *ngFor="let cell of board.cells.flat();">
+    <span *ngIf="cell.status === 'clear' && !cell.mine">
+      {{ cell.proximityMines }}
+    </span>
+    <span *ngIf="cell.status === 'flag'">
+      🏴‍☠️
+    </span>
+    <span *ngIf="cell.mine && cell.status === 'clear'">
+      💣
+    </span>
+  </mat-grid-tile>
+</mat-grid-list>
+
+

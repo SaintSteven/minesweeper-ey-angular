@@ -74,6 +74,7 @@ export class Board {
 
 
       if (this.remainingCells-- <= 1) {
+        this.revealAll();
         return 'win';
       }
       return null;

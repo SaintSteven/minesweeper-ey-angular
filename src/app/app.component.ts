@@ -26,7 +26,7 @@ export class AppComponent {
   flag(cell: Cell) {
     if (cell.status === 'flag') {
       cell.status = 'open';
-    } else {
+    } else if (cell.status === 'open') {
       cell.status = 'flag';
     }
   }
