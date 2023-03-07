@@ -8,11 +8,10 @@ import { Cell } from '../game/cell';
 })
 export class AppComponent {
   title = 'Buscaminas EY';
-  board: Board;
+  board!: Board;
 
   constructor() {
     this.reset();
-    this.board = new Board(10, 10);
   }
 
   checkCell(cell: Cell) {
@@ -32,6 +31,7 @@ export class AppComponent {
   }
 
   reset() {
-    this.board = new Board(10, 10);
+    const totalBombs = 20 - Math.floor(Math.random() * 10)
+    this.board = new Board(10, totalBombs);
   }
 }

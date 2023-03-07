@@ -16,12 +16,14 @@ export class Board {
       }
     }
 
-    // Assign mines
-    for (let i = 0; i < mines; i++) {
-      this.getRandomCell().mine = true;
+    let mineCount = 0
+    while (mineCount < mines) {
+      const cell = this.getRandomCell();
+      if (!cell.mine) {
+        cell.mine = true;
+        mineCount++
+      }
     }
-
-    // Count mines
 
     for (let y = 0; y < size; y++) {
       for (let x = 0; x < size; x++) {
@@ -37,9 +39,7 @@ export class Board {
         }
         this.cells[y][x].proximityMines = adjacentMines;
 
-        if (this.cells[y][x].mine) {
-          this.mineCount++;
-        }
+        if (this.cells[y][x].mine) this.mineCount++
       }
     }
     this.remainingCells = size * size - this.mineCount;
@@ -60,7 +60,6 @@ export class Board {
     } else {
       cell.status = 'clear';
 
-      // Empty cell, let's clear the whole block.
       if (cell.proximityMines === 0) {
         for (const peer of PEERS) {
           if (
@@ -71,8 +70,6 @@ export class Board {
           }
         }
       }
-
-
       if (this.remainingCells-- <= 1) {
         this.revealAll();
         return 'win';
@@ -80,6 +77,7 @@ export class Board {
       return null;
     }
   }
+
   revealAll() {
     for (const row of this.cells) {
       for (const cell of row) {
