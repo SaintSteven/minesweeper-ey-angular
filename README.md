@@ -42,10 +42,10 @@ ng lint
 ng test
 ```
 
-🐱 TEST COVERAGE. Run the command below, then search inside your repo and open in your browser coverage/lcov-report/index.html
+🐱 TEST COVERAGE. Run the command below, then go to [http://localhost:9876/](http://localhost:9876/)
 
 ```bash
-npm run test-coverage
+ng test --code-coverage
 ```
 
 ## About
