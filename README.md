@@ -42,7 +42,7 @@ ng lint
 ng test
 ```
 
-🐱 TEST COVERAGE. Run the command below, then go to [http://localhost:9876/](http://localhost:9876/)
+🐱  TEST COVERAGE. Run the command below, then search inside your repo and open in your browser coverage/minesweeper-ey-angular/index.html
 
 ```bash
 ng test --code-coverage
