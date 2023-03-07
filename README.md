@@ -1,27 +1,55 @@
-# MinesweeperEyAngular
+# Minesweeper for "EY Front Challenge" 🏴‍☠️
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+This is a project I made to enter the EY team. Thank you for checking my work :)
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+🚧 First at all, you need Angular CLI ``npm install -g @angular/cli``
 
-## Code scaffolding
+1) Clone the repo using Git.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+git clone https://github.com/SaintSteven/minesweeper-ey
+```
+2) Inside the directory, install all the modules.
 
-## Build
+```bash
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## To play!
 
-## Running unit tests
+Inside the directory, run this to play minesweeper in your browser.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+ng serve
+```
+Then, in your browser, go to  [http://localhost:4200/](http://localhost:4200/)
 
-## Running end-to-end tests
+And that's all!
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Usage
 
-## Further help
+🚿 LINT. If everything is OK, you are going to see 'All files pass linting.' in your terminal
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+ng lint
+```
+
+🐶 TEST.
+
+```bash
+ng test
+```
+
+🐱 TEST COVERAGE. Run the command below, then search inside your repo and open in your browser coverage/lcov-report/index.html
+
+```bash
+npm run test-coverage
+```
+
+## About
+
+A project made with Angular and Angular Material. This is my first time using Angular Material. It seems OK, but the documentation is kinda lazy.
+
+npm: '9.4.0', Node: '18.12.1'
